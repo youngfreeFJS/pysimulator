@@ -5,6 +5,17 @@
 
 Apple Simulator Python Client.
 
+
+# [PYPI](https://pypi.org/project/pysimulator/)
+
+[![PyPI](https://img.shields.io/pypi/v/pysimulator.svg)](https://pypi.org/project/pysimulator/)
+![PyPI](https://img.shields.io/pypi/pyversions/pysimulator.svg)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/pysimulator.svg)
+
+```
+pip install pysimulator
+```
+
 # Thanks
 - https://github.com/appium/node-simctl
 - https://github.com/appium/appium-ios-simulator
