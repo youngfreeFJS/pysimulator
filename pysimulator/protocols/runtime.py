@@ -1,3 +1,7 @@
+'''Runtime Modle.'''
+from typing import List
+
+
 class RunTime:
     def __init__(self,
                  bundle_path,
@@ -16,7 +20,4 @@ class RunTime:
         self.name = name
 
 
-
-
-
-
+RunTimeList = List[RunTime]
