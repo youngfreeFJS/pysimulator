@@ -1,4 +1,4 @@
-name: Functional Tests
+name: End to End Testing
 
 on: [pull_request, push]
 

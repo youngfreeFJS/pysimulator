@@ -1,7 +1,7 @@
 # pysimulator
 Apple Simulator Python Client.
 --- 
-![example workflow](https://github.com/github/docs/actions/workflows/e2e.yml/badge.svg)
+![example workflow](https://github.com/youngfreeFJS/pysimulator/actions/workflows/e2e.yaml/badge.svg)
 
 
 # Thanks
