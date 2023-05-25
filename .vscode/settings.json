@@ -1,0 +1,13 @@
+{
+  // TESTS
+  "python.testing.pytestArgs": ["tests"],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  // FORMATTER
+  "files.autoSave": "afterDelay",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.formatOnSave": true
+  },
+  "autopep8.args": ["--max-line-length=120"]
+}
