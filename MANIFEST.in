@@ -1,0 +1,3 @@
+graft pysimulator
+include requirements.txt requirements.dev.txt
+recursive-exclude * *.pyc *.pyo *.swo *.swp *.map *.DS_Store
