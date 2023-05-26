@@ -24,6 +24,10 @@ jobs:
     runs-on: macos-12
     steps:
     - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: "3.10"
     - uses: actions/setup-node@v3
       with:
         node-version: lts/*
@@ -33,15 +37,12 @@ jobs:
         xcode-version: "${{ matrix.xcodeVersion }}"
     - run: xcrun simctl list
       name: List devices on Xcode@${{ matrix.xcodeVersion }}
-    - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: "3.10"
     - name: Install dependency
       run: |
         pip install pip -U
-        pip install -r requirements.txt -U
+        pip install -r requirements.txt.lock -U
         pip install -r requirements.dev.txt -U
     - name: Run e2e test
       run: |
-        python -m pytest pysimulator
+        python -m pytest
+    
