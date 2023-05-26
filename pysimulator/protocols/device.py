@@ -24,6 +24,12 @@ class Device:
         self.log_path = log_path
         self.data_path = data_path
 
+    @staticmethod
+    def create(name, device_type, runtime) -> 'Device':
+        cmd = f'xcrun simctl create "{name}" "{device_type}" "{runtime}"'
+        udid = Executor.shell(cmd).p_open.stdout_data.strip()
+        return DeviceList.list_devices().filter(udid=udid).first()
+
 
 class DeviceList(List[Device]):
 
