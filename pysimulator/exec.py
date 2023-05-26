@@ -1,6 +1,9 @@
 import json
 from subprocess import Popen, PIPE, SubprocessError
 
+class SimulatorErr(Exception):
+    ...
+
 class PopenReturns:
     def __init__(self, p_open: Popen) -> None:
         self.p_open = p_open
@@ -40,5 +43,8 @@ class Executor:
 
         # Add variable `success` to func returns object.
         sub_proc.success = sub_proc.returncode == 0
+
+        if not sub_proc.success:
+            raise SimulatorErr(f'Original Error: {sub_proc.stderr_data}')
 
         return PopenReturns(sub_proc)

@@ -17,6 +17,7 @@ def test_device_list():
         assert device.name != None
         assert len(device.udid) == 36
 
+
 def test_device_list_filter():
     device_list = Simctl.list_devices()
     devices_filter = device_list.filter('myios135a')
@@ -26,4 +27,10 @@ def test_device_list_filter():
 def test_device_list_first():
     device_list = Simctl.list_devices()
     device = device_list.filter('myios135a').first()
+    assert isinstance(device, Device)
     assert device.name == 'myios135a'
+
+
+def test_device_type_list():
+    device_type_list = Simctl.list_devicetypes()
+    assert len(device_type_list) > 0
