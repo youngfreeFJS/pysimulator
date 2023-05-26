@@ -1,6 +1,19 @@
+import pytest
 from pysimulator.protocols.simctl import Simctl, ListTypes
 from pysimulator.protocols.runtime import RunTime, RunTimeList
 from pysimulator.protocols.device import Device, DeviceList
+
+
+@pytest.fixture
+def setup_new_device():
+    new_device = Device.create('demo01-device1',
+                               device_type=Simctl.list_devicetypes().filter('iPhone X').first().identifier,
+                               runtime=Simctl.list_runtimes().filter('13.5').first().identifier
+                               )
+    assert len(new_device.udid) == 36
+    assert new_device.name == 'demo01-device1'
+    yield new_device
+    new_device.delete()
 
 
 def test_runtime_list():
@@ -18,17 +31,17 @@ def test_device_list():
         assert len(device.udid) == 36
 
 
-def test_device_list_filter():
+def test_device_list_filter(setup_new_device: Device):
     device_list = Simctl.list_devices()
-    devices_filter = device_list.filter('myios135a')
+    devices_filter = device_list.filter(setup_new_device.name)
     assert len(devices_filter) == 1
 
 
-def test_device_list_first():
+def test_device_list_first(setup_new_device: Device):
     device_list = Simctl.list_devices()
-    device = device_list.filter('myios135a').first()
+    device = device_list.filter(setup_new_device.name).first()
     assert isinstance(device, Device)
-    assert device.name == 'myios135a'
+    assert device.name == setup_new_device.name
 
 
 def test_device_type_list():
