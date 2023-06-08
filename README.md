@@ -21,4 +21,5 @@ pip install pysimulator
 - https://github.com/appium/appium-ios-simulator
 - https://github.com/MobileNativeFoundation
 - https://github.com/wix/AppleSimulatorUtils
-- 
+- https://github.com/devicekit/DeviceKit
+
